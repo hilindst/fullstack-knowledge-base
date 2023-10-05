@@ -67,7 +67,9 @@ so in app component html it has and again Alias' can be applied to change proper
 
 ### Local References
  can be placed on any html element, #serverNameInput---referencing element with all its properties
- ONLY available in that html template
+ ONLY useable in that html template, but can be passed thru that TS
+    <input type='text' class='form-control' #serverNameInput>
+
     onAddServr(nameInput: HTMLInputElement){
       this.serverCreated.emit({
         serverName: nameInput.value,
@@ -75,3 +77,28 @@ so in app component html it has and again Alias' can be applied to change proper
       });
     }
 
+## @ViewChild
+
+If accessing inside of ngOnInit() it should look like in template:
+    @ViewChild('serverContentInput', {static: true}) serverContentInput: ElementRef; 
+
+so far...Component, OnInit, EventEmitter, Output, ViewChild, ElementRef from '@angular/core'
+
+
+## ng-content  Directive
+    <ng-content></ng-content>
+
+re-usable widgets
+
+
+## Lifecycle Hooks
+ngOnChanges(changes: Simple Changes): called after a bound input property changes (@input)
+ngOnInit: called once the component is initialized
+ngDoCheck: called during every change detection run
+ngAfterContentInit: called after content(ng-content) has been projected into view
+ngAfterContentChecked: called every time the projected content has been checked
+ngAfterViewInit: called after the component's view (and child view) has been initialized
+ngAfterViewChecked: called every tiem the view (and child views) have been checked
+ngOnDestroy: called once the component is about to be destroyed
+
+Implement and import interfaces 
