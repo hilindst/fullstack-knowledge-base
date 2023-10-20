@@ -152,7 +152,7 @@ filter
 
 
     this.firstObsSubscription = customIntervalObservable.pipe(filter(data => {
-      return data > 0;
+      return data > 0;  //true and skips round 1
     }), map(project: (data: number) => {
       return 'Round: ' + (data + 1);
     })).subscribe(data => {
@@ -164,3 +164,19 @@ filter
       console.log('Complete');
     }
     );
+
+## Subjects
+communicate across components through services
+preferred over event emitter
+a special kind of observable 
+actively triggered
+next()
+   
+    activatedEmitter = new Subject<boolean>;
+
+    onActivate(){
+      this.userService.activatedEmitter.next(value: true);
+    }
+
+dont' forget to store and OnDestroy subject subscription
+
